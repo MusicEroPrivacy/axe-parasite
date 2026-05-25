@@ -1,0 +1,67 @@
+manifestVersion: 1
+id: axe-parasite
+category: bitcoin
+name: Axe-Parasite
+version: "0.1.0"
+tagline: Parasite Pool + Your Node
+description: >-
+  Run your own Bitcoin node + a Stratum proxy that mines on Parasite Pool (parasite.wtf).
+
+  Miner connection:
+    - URL: `stratum+tcp://<your-umbrel-ip>:7890`
+    - Username: your Parasite username / LN address
+    - Password: anything
+
+  Features:
+    - Uses your local node for block templates
+    - Shows Parasite Pool stats
+    - Displays node sync & prune status
+    - Clean WillItMod-style dashboard
+
+developer: MusicEroPrivacy
+website: https://github.com/MusicEroPrivacy/axe-parasite
+repo: https://github.com/MusicEroPrivacy/axe-parasite
+support: https://x.com/KarmaCpu
+dependencies: []
+port: 21215
+icon: "icon.png"
+gallery:
+  - "icon.png"
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+widgets:
+  - id: "sync"
+    type: "text-with-progress"
+    refresh: "5s"
+    endpoint: "axe-parasite-app:3000/api/widget/sync"
+    link: ""
+    example:
+      type: "text-with-progress"
+      link: ""
+      title: "Node Sync"
+      text: "87%"
+      progressLabel: "Syncing"
+      progress: 0.87
+  - id: "pool"
+    type: "three-stats"
+    refresh: "30s"
+    endpoint: "axe-parasite-app:3000/api/widget/pool"
+    link: ""
+    example:
+      type: "three-stats"
+      link: ""
+      items:
+        - title: "Pool Hashrate"
+          text: "12.4"
+          subtext: "PH/s"
+        - title: "Your Hashrate"
+          text: "890"
+          subtext: "GH/s"
+        - title: "Workers"
+          text: "3"
+backupIgnore:
+  - data/node/blocks
+  - data/node/chainstate
+  - data/node/indexes
+submitter: MusicEroPrivacy
